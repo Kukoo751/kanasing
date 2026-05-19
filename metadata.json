@@ -1,0 +1,6 @@
+{
+  "name": "Kanasing",
+  "description": "Extracts Kanji from Japanese lyrics and displays their Furigana readings for language learners.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,12 +1,14 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import path from "path";
 import cors from "cors";
 import { GoogleGenAI, Type } from "@google/genai";
 import { createServer as createViteServer } from "vite";
-import dotenv from "dotenv";
 
-dotenv.config();
 
+
+console.log("Gemini key loaded:", Boolean(process.env.GEMINI_API_KEY));
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
   httpOptions: {
@@ -18,7 +20,7 @@ const ai = new GoogleGenAI({
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+
 
   app.use(cors());
   app.use(express.json({ limit: '10mb' }));
@@ -89,9 +91,10 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://0.0.0.0:${PORT}`);
-  });
+  const PORT = 3000;
+app.listen(PORT, "localhost", () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
 }
 
 startServer();
